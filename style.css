@@ -50,6 +50,7 @@ input[type="radio"] {
     width: 98px;
     height: 98px;
     background-color: #FFFFFF;
+    border: 1px solid white;
     border-radius: 12px;
     font-family: 'StratosSkyeng';
     font-style: normal;
@@ -70,6 +71,7 @@ input[type="radio"] {
     width: 246px;
     height: 50px;
     background: #7AC100;
+    border: none;
     border-radius: 12px;
     font-family: 'StratosSkyeng';
     font-style: normal;
