@@ -21,8 +21,15 @@ function renderStartButton(container) {
     startButton.textContent = 'Start';
     startButton.classList.add('startScreen__button');
 
-    startButton.addEventListener('click', () => {
 
+    startButton.addEventListener('click', () => {
+        if (document.getElementById('1').checked) {
+            console.log(`easy one`);
+        } else if (document.getElementById('2').checked) {
+            console.log(`medium one`);
+        } else {
+            console.log(`hard one`);
+        }
     });
 
     container.appendChild(startButton);
