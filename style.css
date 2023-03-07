@@ -15,7 +15,7 @@ body,html {
   align-items: center;
   justify-content: center;
 }
-.app {
+.startScreen__background {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -46,6 +46,11 @@ body,html {
 input[type="radio"] {
     display: none;
 }
+
+.startScreen__label:has(input:checked){
+    border: 1px solid #0080C1;
+}
+
 .startScreen__label {
     width: 98px;
     height: 98px;
@@ -67,6 +72,7 @@ input[type="radio"] {
     border: 1px solid #0080C1;
 }
 
+
 .startScreen__button {
     width: 246px;
     height: 50px;
@@ -86,3 +92,4 @@ input[type="radio"] {
 .startScreen__button:hover {
     border: 1px solid #0080C1;
 }
+
