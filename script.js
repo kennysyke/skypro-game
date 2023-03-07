@@ -13,7 +13,7 @@ window.application = {
     renderBlock: function (blockName, container) {
         this.blocks[blockName](container);
     },
-    timers: []
+    level: []
 }
 
 function renderStartButton(container) {
@@ -21,8 +21,16 @@ function renderStartButton(container) {
     startButton.textContent = 'Start';
     startButton.classList.add('startScreen__button');
 
-    startButton.addEventListener('click', () => {
 
+    startButton.addEventListener('click', () => {
+        window.application.level = document.querySelector('input[name="difficulty"]:checked').id;
+        if (window.application.level === 1) {
+            console.log(`easy one`);
+        } else if (window.application.level === 2) {
+            console.log(`medium one`);
+        } else if (window.application.level === 3) {
+            console.log(`hard one`);
+        }
     });
 
     container.appendChild(startButton);
