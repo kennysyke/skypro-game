@@ -2,11 +2,12 @@
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
+
 }
 .gameScreen__front {
     width: 95px;
     height: 133px;
-    border: 1px solid black; 
+    border: 1px solid black;
     border-radius: 5px;
     box-shadow: 2px 2px 5px grey;
     position: absolute;
@@ -19,13 +20,56 @@
     position: relative;
 }
 
+.gameScreen__card.flipped {
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease-in-out;
+    transform: rotateY(180deg);
+}
+.gameScreen__front, .gameScreen__back {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 .gameScreen__back {
     width: 95px;
     height: 133px;
     background-image: url(img/рубашка.svg);
-    position: absolute;
+    transform: rotateY(180deg);
 }
-    
+
+.gameScreen__topboard {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 35px;
+}
+
+.gameScreen__button {
+    width: 246px;
+    height: 50px;
+    background: #7ac100;
+    border: none;
+    border-radius: 12px;
+    font-family: 'StratosSkyeng';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    text-align: center;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: #ffffff;
+}
+
+.gameScreen__timer {
+font-family: 'StratosSkyeng';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 32px;
+font-feature-settings: 'pnum' on, 'lnum' on;
+color: #FFFFFF;
+}
 
 .diamonds6 {
     background-image: url(img/cards/diamonds/6.svg);
