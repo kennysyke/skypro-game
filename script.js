@@ -207,6 +207,7 @@ function renderGameScreen(cards) {
                     console.log(`you have won`);
                 }
             } else {
+                endTimer();
                 console.log(`game over`);
             }
         }
@@ -216,10 +217,10 @@ function renderGameScreen(cards) {
 
     console.log(createdCards);
 
-    createdCards.forEach((card) => {
-        card.addEventListener('click', () => {
-            flipCard(card);
-            card.classList.toggle('flipped');
-        });
-    });
+    for (let i = 0; i < createdCards.length; i++) {
+        createdCards[i].addEventListener(
+            'click',
+            flipCard.bind(createdCards[i])
+        );
+    }
 }
