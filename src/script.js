@@ -88,7 +88,7 @@ const ranks = ['6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
 
 const numCardsEasy = 6;
 const numCardsMedium = 12;
-const numCardsDifficult = 20;
+const numCardsDifficult = 18;
 
 function generateCards(numCards) {
     const cards = [];
@@ -137,9 +137,11 @@ function renderGameScreen(cards) {
 
     const topboard = document.createElement('div');
     topboard.classList.add('gameScreen__topboard');
+    topboard.classList.add('center');
 
     const board = document.createElement('div');
     board.classList.add('gameScreen__board');
+    board.classList.add('center');
 
     for (let i = 0; i < cards.length; i++) {
         const card = document.createElement('div');
@@ -171,8 +173,12 @@ function renderGameScreen(cards) {
     timerCount.classList.add('gameScreen__timer');
     let time = 0;
     const timerInterval = setInterval(() => {
+        const minutes = Math.floor(time / 60)
+            .toString()
+            .padStart(2, '0');
+        const seconds = (time % 60).toString().padStart(2, '0');
+        timerCount.textContent = `${minutes}:${seconds}`;
         time++;
-        timerCount.textContent = `Time: ${time} seconds`;
     }, 1000);
     topboard.appendChild(timerCount);
     window.application.renderBlock('restart-button', topboard);
@@ -180,6 +186,58 @@ function renderGameScreen(cards) {
     const endTimer = () => {
         clearInterval(timerInterval);
     };
+
+    // let modalWin = $modal({
+    //     title: 'You have won, congratulations',
+    //     content: '<img class="modal_image" scr="/img/Image.png">',
+    // });
+
+    // let modalLost = $modal({
+    //     title: 'You have lost',
+    //     content: '<img class="modal_image" scr="/img/Image-2.png">',
+    //     footerButtons: [{ class: 'modal_button', text: 'play again' }],
+    // });
+
+    function showModal(won, timeTaken) {
+        const overlay = document.querySelector('.overlay');
+        const modalHeader = document.querySelector('.modal-header-text');
+        const modalImage = document.querySelector('.modal-image');
+        const modalTimeTaken = document.querySelector('.modal-time-taken');
+        const modalTime = document.querySelector('.modal-time');
+
+        // Set modal header text and image based on whether the player won or lost
+        if (won) {
+            modalHeader.textContent = 'Congratulations!';
+            modalImage.src = 'img/Image.png';
+        } else {
+            modalHeader.textContent = 'Sorry, you lost.';
+            modalImage.src = 'img/Image-2.png';
+        }
+
+        // Set modal time taken text
+        const minutes = Math.floor(timeTaken / 60);
+        const seconds = timeTaken % 60;
+        modalTimeTaken.textContent = `Time taken:`;
+        modalTime.textContent = `${minutes
+            .toString()
+            .padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+        // Show the modal
+        overlay.style.display = 'block';
+
+        // Set up event listener for restart button
+        const restartButton = document.querySelector('.modal-restart-button');
+        restartButton.addEventListener('click', () => {
+            overlay.style.display = 'none';
+            window.application.renderScreen('start');
+        });
+
+        // Set up event listener for close button
+        const closeButton = document.querySelector('.close');
+        closeButton.addEventListener('click', () => {
+            overlay.style.display = 'none';
+        });
+    }
 
     let flippedCard = null;
     let matchedCards = 0;
@@ -204,10 +262,12 @@ function renderGameScreen(cards) {
                 flippedCard = null;
                 if (matchedCards === cards.length / 2) {
                     endTimer();
+                    showModal(true, time);
                     console.log(`you have won`);
                 }
             } else {
                 endTimer();
+                showModal(false, time);
                 console.log(`game over`);
             }
         }
