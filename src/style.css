@@ -4,9 +4,9 @@
 }
 @font-face {
     font-family: StratosSkyeng;
-    src: url('/fonts/statosskyeng-v1.001/Web fonts/stratosskyengweb-regular.woff2')
+    src: url('../fonts/statosskyeng-v1.001/Web fonts/stratosskyengweb-regular.woff2')
             format('woff2'),
-        url('/fonts/statosskyeng-v1.001/Web fonts/stratosskyengweb-regular.woff')
+        url('../fonts/statosskyeng-v1.001/Web fonts/stratosskyengweb-regular.woff')
             format('woff');
 }
 

@@ -1,20 +1,17 @@
 {
     "devDependencies": {
         "css-loader": "^6.7.3",
-        "css-minimizer-webpack-plugin": "^4.2.2",
         "eslint": "^8.35.0",
         "eslint-config-prettier": "^8.7.0",
         "eslint-plugin-prettier": "^4.2.1",
         "html-webpack-plugin": "^5.5.0",
-        "mini-css-extract-plugin": "^2.7.3",
         "prettier": "^2.8.4",
         "style-loader": "^3.3.1",
         "stylelint": "^14.16.0",
         "stylelint-config-prettier": "^9.0.4",
         "stylelint-config-standard": "^29.0.0",
         "webpack": "^5.76.1",
-        "webpack-cli": "^5.0.1",
-        "webpack-dev-server": "^4.11.1"
+        "webpack-cli": "^5.0.1"
     },
     "name": "skypro-game",
     "version": "1.0.0",
@@ -27,7 +24,10 @@
         "format": "prettier --write .",
         "lint:js": "eslint **/*.js",
         "lint:css": "stylelint **/*.css",
-        "prepare": "husky install"
+        "lint": "npm run lint:js && npm run lint:css",
+        "prepare": "husky install",
+        "build": "NODE_ENV=production webpack",
+        "start": "webpack-dev-server ––open"
     },
     "repository": {
         "type": "git",
@@ -42,6 +42,7 @@
     "homepage": "https://github.com/kennysyke/skypro-game#readme",
     "description": "",
     "dependencies": {
+        "husky": "^8.0.3",
         "stylelint-prettier": "^3.0.0"
     }
 }

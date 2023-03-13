@@ -7,7 +7,7 @@ const mode =
     process.env.NODE_ENV === 'production' ? 'production' : 'development';
 
 module.exports = {
-    entry: './src/index.js',
+    entry: './src/script.js',
     mode,
     module: {
         rules: [
@@ -15,10 +15,10 @@ module.exports = {
                 test: /\.css$/,
                 use: [MiniCssExtractPlugin.loader, 'css-loader'],
             },
-            {
-                test: /\.(png|svg|jpg|jpeg|gif)$/i,
-                type: 'asset/resource',
-            },
+            // {
+            //     test: /\.(png|svg|jpg|jpeg|gif)$/i,
+            //     type: 'asset/resource',
+            // },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,
                 type: 'asset/resource',
