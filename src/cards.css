@@ -38,7 +38,8 @@
 .gameScreen__back {
     width: 95px;
     height: 133px;
-    background-image: url(img/рубашка.svg);
+
+    /* background-image: url(img/рубашка.svg); */
     transform: rotateY(180deg);
 }
 
@@ -73,6 +74,7 @@
     color: #fff;
 }
 
+/* 
 .diamonds6 {
     background-image: url(img/cards/diamonds/6.svg);
 }
@@ -215,4 +217,4 @@
 
 .heartsA {
     background-image: url(img/cards/hearts/A.svg);
-}
+} */

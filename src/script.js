@@ -153,9 +153,11 @@ function renderGameScreen(cards) {
         const front = document.createElement('div');
         front.classList.add('gameScreen__front');
         front.classList.add(cards[i].suit + cards[i].rank);
+        front.style.backgroundImage = `url(./img/cards/${cards[i].suit}/${cards[i].rank}.svg`;
 
         const back = document.createElement('div');
         back.classList.add('gameScreen__back');
+        back.style.backgroundImage = `url(./img/рубашка.svg)`;
 
         card.appendChild(front);
         card.appendChild(back);
