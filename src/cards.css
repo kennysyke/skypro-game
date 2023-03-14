@@ -55,7 +55,7 @@
     background: #7ac100;
     border: none;
     border-radius: 12px;
-    font-family: StratosSkyeng;
+    font-family: StratosSkyeng, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
@@ -66,7 +66,7 @@
 }
 
 .gameScreen__timer {
-    font-family: StratosSkyeng;
+    font-family: StratosSkyeng, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 64px;

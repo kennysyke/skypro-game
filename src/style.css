@@ -36,7 +36,7 @@ html {
 }
 
 .startScreen__title {
-    font-family: StratosSkyeng;
+    font-family: StratosSkyeng, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 40px;
@@ -67,7 +67,7 @@ input[type='radio']:checked + label {
     background-color: #fff;
     border: 1px solid white;
     border-radius: 12px;
-    font-family: StratosSkyeng;
+    font-family: StratosSkyeng, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 64px;
@@ -88,7 +88,7 @@ input[type='radio']:checked + label {
     background: #7ac100;
     border: none;
     border-radius: 12px;
-    font-family: StratosSkyeng;
+    font-family: StratosSkyeng, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
@@ -131,7 +131,7 @@ input[type='radio']:checked + label {
 }
 
 .modal-header-text {
-    font-family: StratosSkyeng;
+    font-family: StratosSkyeng, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 40px;
@@ -141,7 +141,7 @@ input[type='radio']:checked + label {
 }
 
 .modal-time {
-    font-family: StratosSkyeng;
+    font-family: StratosSkyeng, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 64px;
@@ -152,7 +152,7 @@ input[type='radio']:checked + label {
 .modal-restart-button {
     width: 246px;
     height: 48px;
-    font-family: StratosSkyeng;
+    font-family: StratosSkyeng, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
@@ -185,7 +185,7 @@ input[type='radio']:checked + label {
 }
 
 .modal-time-taken {
-    font-family: StratosSkyeng;
+    font-family: StratosSkyeng, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
