@@ -153,11 +153,11 @@ function renderGameScreen(cards) {
         const front = document.createElement('div');
         front.classList.add('gameScreen__front');
         front.classList.add(cards[i].suit + cards[i].rank);
-        front.style.backgroundImage = `url(./img/cards/${cards[i].suit}/${cards[i].rank}.svg`;
+        front.style.backgroundImage = `url(./dist/img/cards/${cards[i].suit}/${cards[i].rank}.svg`;
 
         const back = document.createElement('div');
         back.classList.add('gameScreen__back');
-        back.style.backgroundImage = `url(./img/рубашка.svg)`;
+        back.style.backgroundImage = `url(./dist/img/рубашка.svg)`;
 
         card.appendChild(front);
         card.appendChild(back);
@@ -189,17 +189,6 @@ function renderGameScreen(cards) {
         clearInterval(timerInterval);
     };
 
-    // let modalWin = $modal({
-    //     title: 'You have won, congratulations',
-    //     content: '<img class="modal_image" scr="/img/Image.png">',
-    // });
-
-    // let modalLost = $modal({
-    //     title: 'You have lost',
-    //     content: '<img class="modal_image" scr="/img/Image-2.png">',
-    //     footerButtons: [{ class: 'modal_button', text: 'play again' }],
-    // });
-
     function showModal(won, timeTaken) {
         const overlay = document.querySelector('.overlay');
         const modalHeader = document.querySelector('.modal-header-text');
@@ -210,10 +199,10 @@ function renderGameScreen(cards) {
         // Set modal header text and image based on whether the player won or lost
         if (won) {
             modalHeader.textContent = 'Congratulations!';
-            modalImage.src = 'img/Image.png';
+            modalImage.src = 'dist/img/Image.png';
         } else {
             modalHeader.textContent = 'Sorry, you lost.';
-            modalImage.src = 'img/Image-2.png';
+            modalImage.src = 'dist/img/Image-2.png';
         }
 
         // Set modal time taken text
