@@ -39,12 +39,15 @@ module.exports = {
     },
     devtool: process.env.NODE_ENV === 'production' ? false : 'source-map',
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, './dist'),
         filename: 'bundle.js',
     },
     plugins: [
         new MiniCssExtractPlugin(),
-        new HtmlWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: 'dist/index.html',
+        }),
         new CopyPlugin({
             patterns: [{ from: 'static' }],
         }),
