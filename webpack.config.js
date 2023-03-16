@@ -13,11 +13,6 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.ts$/,
-                use: 'ts-loader',
-                exclude: /node_modules/,
-            },
-            {
                 test: /\.css$/,
                 use: [MiniCssExtractPlugin.loader, 'css-loader'],
             },
@@ -37,10 +32,14 @@ module.exports = {
     optimization: {
         minimizer: ['...', new CssMinimizerPlugin()],
     },
-    devtool: process.env.NODE_ENV === 'production' ? false : 'source-map',
+    devtool:
+        process.env.NODE_ENV === 'production'
+            ? 'hidden-source-map'
+            : 'source-map',
     output: {
         path: path.resolve(__dirname, './dist'),
         filename: 'bundle.js',
+        clean: true,
     },
     plugins: [
         new MiniCssExtractPlugin(),
@@ -49,7 +48,7 @@ module.exports = {
             template: 'dist/index.html',
         }),
         new CopyPlugin({
-            patterns: [{ from: 'static' }],
+            patterns: [{ from: 'static', to: 'static' }],
         }),
     ],
 };

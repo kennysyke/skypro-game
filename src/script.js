@@ -1,3 +1,6 @@
+import '/static/style.css';
+import '/static/cards.css';
+
 window.application = {
     blocks: {
         'start-button': renderStartButton,
