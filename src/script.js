@@ -156,11 +156,11 @@ function renderGameScreen(cards) {
         const front = document.createElement('div');
         front.classList.add('gameScreen__front');
         front.classList.add(cards[i].suit + cards[i].rank);
-        front.style.backgroundImage = `url(./dist/img/cards/${cards[i].suit}/${cards[i].rank}.svg`;
+        front.style.backgroundImage = `url(./static/img/cards/${cards[i].suit}/${cards[i].rank}.svg`;
 
         const back = document.createElement('div');
         back.classList.add('gameScreen__back');
-        back.style.backgroundImage = `url(./dist/img/рубашка.svg)`;
+        back.style.backgroundImage = `url(./static/img/рубашка.svg)`;
 
         card.appendChild(front);
         card.appendChild(back);
@@ -202,10 +202,10 @@ function renderGameScreen(cards) {
         // Set modal header text and image based on whether the player won or lost
         if (won) {
             modalHeader.textContent = 'Congratulations!';
-            modalImage.src = 'dist/img/Image.png';
+            modalImage.src = 'static/img/Image.png';
         } else {
             modalHeader.textContent = 'Sorry, you lost.';
-            modalImage.src = 'dist/img/Image-2.png';
+            modalImage.src = 'static/img/Image-2.png';
         }
 
         // Set modal time taken text
