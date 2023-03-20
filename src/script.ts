@@ -67,18 +67,7 @@ function renderStartButton(container: HTMLElement): void {
             'input[name="difficulty"]:checked'
         )?.id as Level;
 
-        let numCards: number = 0;
-        if (window.application.level === '1') {
-            numCards = numCardsEasy;
-        } else if (window.application.level === '2') {
-            numCards = numCardsMedium;
-        } else if (window.application.level === '3') {
-            numCards = numCardsDifficult;
-        }
-
-        const cards = generateCards(numCards);
-
-        renderGameScreen(cards);
+        renderGameScreen();
     });
 
     container.appendChild(startButton);
@@ -160,24 +149,13 @@ function renderRestartButton(container: HTMLElement): void {
     restartButton.classList.add('gameScreen__button');
 
     restartButton.addEventListener('click', () => {
-        let numCards: number = 0;
-        if (window.application.level === '1') {
-            numCards = numCardsEasy;
-        } else if (window.application.level === '2') {
-            numCards = numCardsMedium;
-        } else if (window.application.level === '3') {
-            numCards = numCardsDifficult;
-        }
-
-        const cards = generateCards(numCards);
-
-        renderGameScreen(cards);
+        renderGameScreen();
     });
 
     container.appendChild(restartButton);
 }
 
-function renderGameScreen(cards: Card[]) {
+function renderGameScreen() {
     const app = document.querySelector('.app') as Element;
     app.textContent = '';
 
@@ -188,6 +166,17 @@ function renderGameScreen(cards: Card[]) {
     const board = document.createElement('div');
     board.classList.add('gameScreen__board');
     board.classList.add('center');
+
+    let numCards: number = 0;
+    if (window.application.level === '1') {
+        numCards = numCardsEasy;
+    } else if (window.application.level === '2') {
+        numCards = numCardsMedium;
+    } else if (window.application.level === '3') {
+        numCards = numCardsDifficult;
+    }
+
+    const cards = generateCards(numCards);
 
     for (let i = 0; i < cards.length; i++) {
         const card = document.createElement('div');
