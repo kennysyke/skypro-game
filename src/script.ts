@@ -1,10 +1,10 @@
 import '/static/style.css';
 import '/static/cards.css';
-
-interface Card {
-    rank: string;
-    suit: string;
-}
+// import { renderStartScreen } from './renderStartScreen';
+// import { renderStartButton } from './renderStartButton';
+// import { renderRestartButton } from './renderRestartButton';
+// import { renderGameScreen } from './renderGameScreen';
+// import { showModal } from './modal';
 
 type Level = '1' | '2' | '3';
 
@@ -26,16 +26,6 @@ declare global {
     }
 }
 
-// interface Application {
-//     blocks: Record<string, (container: HTMLElement) => void>;
-//     token: {};
-//     id: {};
-//     screens: Record<string, () => void>;
-//     renderScreen: (screenName: string) => void;
-//     renderBlock: (blockName: string, container: HTMLElement) => void;
-//     renderGameScreen: (cards: Card[]) => void;
-//     level: Level | null;
-// }
 
 window.application = {
     blocks: {
@@ -115,32 +105,25 @@ const numCardsEasy = 6;
 const numCardsMedium = 12;
 const numCardsDifficult = 18;
 
-function generateCards(numCards: number): Card[] {
-    const ranks = ['A', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+function generateCards(numCards: number) {
     const suits = ['hearts', 'diamonds', 'clubs', 'spades'];
-    const cards: Card[] = [];
+    const ranks = ['6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+
+    const cards = [];
 
     for (let i = 0; i < numCards / 2; i++) {
-        const rankIndex = Math.floor(Math.random() * ranks.length);
-        const suitIndex = Math.floor(Math.random() * suits.length);
-
-        const card: Card = {
-            suit: suits[suitIndex],
-            rank: ranks[rankIndex],
-        };
-
-        const matchingCard: Card = {
-            suit: suits[suitIndex],
-            rank: ranks[rankIndex],
-        };
-
-        if (!cards.some((c) => c.rank === card.rank && c.suit === card.suit)) {
-            cards.push(card);
-            cards.push(matchingCard);
-        }
+        const suit = suits[Math.floor(Math.random() * suits.length)];
+        const rank = ranks[Math.floor(Math.random() * ranks.length)];
+        cards.push({ suit, rank });
+        cards.push({ suit, rank });
     }
 
-    return cards.sort(() => Math.random() - 0.5);
+    for (let i = cards.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [cards[i], cards[j]] = [cards[j], cards[i]];
+    }
+
+    return cards;
 }
 
 function renderRestartButton(container: HTMLElement): void {
