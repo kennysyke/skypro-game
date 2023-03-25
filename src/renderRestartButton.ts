@@ -1,4 +1,4 @@
-import { renderGameScreen } from '/src/renderGameScreen';
+import { renderGameScreen } from './renderGameScreen';
 
 export function renderRestartButton(container: HTMLElement): void {
     const restartButton = document.createElement('button');

@@ -1,10 +1,6 @@
 import { describe, expect, test } from '@jest/globals';
-import { generateCards } from './src/generateCards';
-// const generateCards = require('./src/generateCards');
+import { generateCards } from './src/script';
 
-// describe('generateCards', () => {
-//
-// });
 
 describe('generateCards', () => {
     test('returns an array of cards equal to requred number of cards', () => {

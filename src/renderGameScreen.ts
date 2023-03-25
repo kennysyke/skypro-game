@@ -1,6 +1,7 @@
 import { showModal } from './modal';
 import { flipCard } from './flipcard';
 import { generateCards } from './generateCards';
+import { timerCreation } from './timerCreation';
 
 const numCardsEasy = 6;
 const numCardsMedium = 12;
@@ -57,27 +58,12 @@ export function renderGameScreen() {
     app.appendChild(topboard);
     app.appendChild(board);
 
-    const timerCount = document.createElement('div');
-    timerCount.classList.add('gameScreen__timer');
-    let time = 0;
-    const timerInterval = setInterval(() => {
-        const minutes = Math.floor(time / 60)
-            .toString()
-            .padStart(2, '0');
-        const seconds = (time % 60).toString().padStart(2, '0');
-        timerCount.textContent = `${minutes}:${seconds}`;
-        time++;
-    }, 1000);
-    topboard.appendChild(timerCount);
+    topboard.appendChild(timerCreation());
     window.application.renderBlock('restart-button', topboard);
 
     const endTimer = () => {
         clearInterval(timerInterval);
     };
-
-    showModal();
-
-    flipCard();
 
     const createdCards: NodeListOf<HTMLElement> =
         document.querySelectorAll('.gameScreen__card');

@@ -1,5 +1,6 @@
 import { showModal } from './modal';
-// import { renderGameScreen } from './renderGameScreen';
+
+const cards = document.querySelectorAll('.gameScreen__card');
 
 let flippedCard: HTMLElement | null = null;
 let matchedCards: number = 0;
@@ -25,7 +26,7 @@ export function flipCard(this: HTMLElement) {
             matchedCards++;
             flippedCard = null;
             if (matchedCards === cards.length / 2) {
-                endTimer();
+                clearInterval(window.application.timers.timerInterval);
                 showModal(true, time);
             }
         } else {
