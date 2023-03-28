@@ -1,18 +1,45 @@
-export function timerCreation() {
-    let time = 0;
-    const timerInterval = setInterval(() => {
-        const minutes = Math.floor(time / 60)
-            .toString()
-            .padStart(2, '0');
-        const seconds = (time % 60).toString().padStart(2, '0');
-        const timerCount = document.querySelector(
-            '.gameScreen__timer'
-        ) as HTMLElement;
-        timerCount.textContent = `${minutes}:${seconds}`;
-        time++;
-    }, 1000);
-    window.application.timers.push(timerInterval);
+let sec: number = 0;
+let min: number = 0;
+let timerID: NodeJS.Timeout;
+
+export const startTimer = () => {
+    timer();
+};
+
+export const stopTimer = () => {
+    const cardFieldTimer = document.querySelector(
+        '.gameScreen__timer'
+    ) as Element;
+    cardFieldTimer.textContent = '00:00';
+
+    clearTimeout(timerID);
+    const finalTime =
+        (min > 9 ? min : '0' + min) + ':' + (sec > 9 ? sec : '0' + sec);
+    sec = 0;
+    min = 0;
+
+    return finalTime;
+};
+
+function tick() {
+    sec++;
+    if (sec >= 60) {
+        sec = 0;
+        min++;
+    }
 }
 
-// clearInterval(window.application.timers.timerInterval);
-// delete window.application.timers.myTimer;
+function add() {
+    tick();
+    const cardFieldTimer = document.querySelector(
+        '.gameScreen__timer'
+    ) as Element;
+
+    cardFieldTimer.textContent =
+        (min > 9 ? min : '0' + min) + ':' + (sec > 9 ? sec : '0' + sec);
+    timer();
+}
+
+function timer() {
+    timerID = setTimeout(add, 1000);
+}

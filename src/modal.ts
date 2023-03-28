@@ -1,6 +1,7 @@
 import { renderStartScreen } from './renderStartScreen';
+import { stopTimer } from './timerCreation';
 
-export function showModal(won: boolean, timeTaken: number): void {
+export function showModal(won: boolean) {
     const overlay = document.querySelector('.overlay') as HTMLElement;
     const modalHeader = document.querySelector(
         '.modal-header-text'
@@ -8,10 +9,10 @@ export function showModal(won: boolean, timeTaken: number): void {
     const modalImage = document.querySelector(
         '.modal-image'
     ) as HTMLImageElement;
-    const modalTimeTaken = document.querySelector(
-        '.modal-time-taken'
-    ) as HTMLElement;
+
     const modalTime = document.querySelector('.modal-time') as HTMLElement;
+
+    const finalTime = stopTimer();
 
     // Set modal header text and image based on whether the player won or lost
     if (won) {
@@ -22,13 +23,7 @@ export function showModal(won: boolean, timeTaken: number): void {
         modalImage.src = 'static/img/Image-2.png';
     }
 
-    // Set modal time taken text
-    const minutes = Math.floor(timeTaken / 60);
-    const seconds = timeTaken % 60;
-    modalTimeTaken.textContent = `Time taken:`;
-    modalTime.textContent = `${minutes.toString().padStart(2, '0')}:${seconds
-        .toString()
-        .padStart(2, '0')}`;
+    modalTime.textContent = finalTime;
 
     // Show the modal
     overlay.style.display = 'block';

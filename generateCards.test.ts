@@ -1,5 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import { generateCards } from './src/script';
+import { generateCards } from './src/generateCards';
 
 
 describe('generateCards', () => {
